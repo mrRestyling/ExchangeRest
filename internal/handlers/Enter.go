@@ -1,15 +1,14 @@
 package handlers
 
 import (
-	"exchange/internal/logic"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
 )
 
-func HandlerWelcome(c echo.Context) error {
+func (h Handlers) HandlerWelcome(c echo.Context) error {
 
-	err := c.String(http.StatusOK, logic.Welcome())
+	err := c.String(http.StatusOK, h.Serv.Welcome())
 
 	if err != nil {
 		return err

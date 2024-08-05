@@ -2,7 +2,7 @@ package logic
 
 import "exchange/internal/models"
 
-func Business(request *models.Request) [][]int {
+func (a Appeal) Business(request *models.Request) [][]int {
 	// Создаем массив для хранения результатов
 	result := make([][]int, 0)
 
