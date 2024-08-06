@@ -16,7 +16,7 @@ import (
 func main() {
 	config.SetLogLevel(config.LevelLogs())
 
-	defer config.CloseLogFile() // Убеждаемся, что файл журнала закрыт, когда функция main завершается
+	defer config.CloseLogFile() // Убеждаемся, что файл журнала закрыт, когда функция main завершается.
 
 	fmt.Println()
 	fmt.Println("...Сервер запущен!")
