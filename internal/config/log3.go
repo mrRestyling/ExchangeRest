@@ -5,6 +5,10 @@ import (
 	"os"
 )
 
+var (
+	logFile *os.File
+)
+
 func LevelLogs() string {
 	logLevel := os.Getenv("LOG_LEVEL")
 	if logLevel == "" {
@@ -14,22 +18,29 @@ func LevelLogs() string {
 }
 
 func SetLogLevel(level string) {
+	logFile, err := os.OpenFile("log.txt", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	switch level {
 	case "debug":
-		log.SetOutput(os.Stdout)
 		log.SetFlags(log.LstdFlags | log.Llongfile)
 	case "info":
-		log.SetOutput(os.Stdout)
 		log.SetFlags(log.LstdFlags)
 	case "warn":
-		log.SetOutput(os.Stdout)
 		log.SetFlags(log.LstdFlags | log.Lshortfile)
 	case "error":
-		log.SetOutput(os.Stderr)
 		log.SetFlags(log.LstdFlags | log.Lshortfile)
 	default:
-		log.SetOutput(os.Stdout)
 		log.SetFlags(log.LstdFlags)
+	}
+
+	log.SetOutput(logFile)
+}
+
+func CloseLogFile() {
+	if logFile != nil {
+		logFile.Close()
 	}
 }

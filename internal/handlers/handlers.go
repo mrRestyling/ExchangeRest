@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"exchange/internal/models"
+	"log"
 
 	"github.com/labstack/echo/v4"
 )
@@ -24,7 +25,7 @@ func New(l Servicer) *Handlers {
 func (h Handlers) SetRouts() *echo.Echo {
 
 	s := echo.New()
-
+	log.Println("<-...Сервер запущен...->")
 	s.HideBanner = true
 
 	s.GET("/welcome", h.HandlerWelcome)
