@@ -1,8 +1,9 @@
 package handlers
 
 import (
-	"exchange/internal/models"
 	"log"
+
+	"github.com/mrRestyling/ExchangeRest/internal/models"
 
 	"github.com/labstack/echo/v4"
 )
@@ -28,7 +29,7 @@ func (h Handlers) SetRouts() *echo.Echo {
 	log.Println("<-...Сервер запущен...->")
 	s.HideBanner = true
 
-	s.GET("/welcome", h.HandlerWelcome)
+	s.GET("/", h.HandlerWelcome)
 	s.GET("/b2b", h.HandlerBusiness)
 
 	return s

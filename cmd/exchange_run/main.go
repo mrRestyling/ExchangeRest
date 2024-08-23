@@ -2,15 +2,16 @@ package main
 
 import (
 	"context"
-	"exchange/internal/config"
-	"exchange/internal/handlers"
-	"exchange/internal/logic"
 	"fmt"
 	"log"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	"github.com/mrRestyling/ExchangeRest/internal/config"
+	"github.com/mrRestyling/ExchangeRest/internal/handlers"
+	"github.com/mrRestyling/ExchangeRest/internal/logic"
 )
 
 func main() {

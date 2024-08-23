@@ -1,9 +1,10 @@
 package handlers
 
 import (
-	"exchange/internal/models"
 	"log"
 	"net/http"
+
+	"github.com/mrRestyling/ExchangeRest/internal/models"
 
 	"github.com/labstack/echo/v4"
 )
