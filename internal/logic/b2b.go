@@ -1,8 +1,29 @@
 package logic
 
-import "exchange/internal/models"
+import "github.com/mrRestyling/ExchangeRest/internal/models"
 
 func (a Appeal) Business(request *models.Request) [][]int {
+
+	// Проверяем, что запрос не пустой
+	if request == nil || len(request.Banknotes) == 0 || request.Amount == 0 {
+		return [][]int{}
+	}
+	// Создаем карту для хранения уникальных банкнот
+	uniqueBanknotes := make(map[int]bool)
+
+	// Удаляем дублирующиеся банкноты
+	for _, banknote := range request.Banknotes {
+		uniqueBanknotes[banknote] = true
+	}
+
+	// Преобразуем уникальные банкноты обратно в срез
+	banknotes := make([]int, 0, len(uniqueBanknotes))
+	for banknote := range uniqueBanknotes {
+		banknotes = append(banknotes, banknote)
+	}
+
+	// Обновляем запрос с уникальными банкнотами
+	request.Banknotes = banknotes
 	// Создаем массив для хранения результатов
 	result := make([][]int, 0)
 
